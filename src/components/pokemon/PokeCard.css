@@ -1,0 +1,51 @@
+.Card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2rem;
+    box-shadow: 0 1em 2.5em rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(0.25em);
+    display: grid;
+    grid-template-columns: auto;
+    height: 15vw;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
+    width: 25vw;
+
+}
+
+.Card:hover {
+    cursor: pointer;
+    box-shadow: 0 1em 2.5em rgba(0, 0, 0, 0.9);
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
+}
+
+.Card img {
+    object-fit: contain;
+    width: 12vw;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
+}
+
+
+
+.Card:hover img {
+    width: 13vw;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
+}
+
+.card-img {
+    display: flex;
+    justify-content: center;
+}
+
+.card-info {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    text-transform: capitalize;
+}
+
+.clicked:has() {
+    display: inline;
+}
+
+.clicked {
+    background-color: black;
+}

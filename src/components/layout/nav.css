@@ -1,0 +1,21 @@
+.nav {
+    display: grid;
+    padding: 0.5rem;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+}
+
+.nav h1 {
+    margin: 0px;
+    color: white;
+    border: 0.05rem;
+}
+
+*,
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}

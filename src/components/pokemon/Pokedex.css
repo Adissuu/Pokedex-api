@@ -1,0 +1,15 @@
+.grid {
+    padding: 5rem;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: auto auto auto;
+    gap: 1rem;
+
+}
+
+.pokedex-container {
+    height: 100vh;
+    width: 100vw;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}

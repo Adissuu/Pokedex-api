@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './PokeCard.css'
 
 
+
 export default class PokeCard extends Component {
     state = {
         name: '',
@@ -29,7 +30,7 @@ export default class PokeCard extends Component {
         return (
             <div className={`Card ${this.state.clicked ? "clicked" : ""}`} onClick={() => this.setState({ clicked: !this.state.clicked })}>
                 <div className="card-img">
-                    <img src={this.state.imageUrl}></img>
+                    <img src={this.state.imageUrl} className='image-pkm'></img>
                 </div>
                 <div className="card-info">
                     <h3>{this.state.index.toString().padStart(3, "0")}</h3>

@@ -37,6 +37,7 @@
 }
 
 .card-info {
+    font-size: 1vw;
     display: flex;
     justify-content: center;
     gap: 0.5rem;
@@ -55,4 +56,44 @@
     position: absolute;
     z-index: -6;
     width: 16rem;
+}
+
+@media screen and (max-width: 822px) {
+    .Card {
+        height: 25vw;
+        width: 25vw;
+    }
+
+    .Card .image-pkm {
+
+        width: 22vw;
+    }
+
+    .Card:hover .image-pkm {
+        width: 23vw;
+    }
+
+    .card-info {
+        font-size: 2vw;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .Card {
+        height: 35vw;
+        width: 35vw;
+    }
+
+    .Card .image-pkm {
+
+        width: 31vw;
+    }
+
+    .Card:hover .image-pkm {
+        width: 32vw;
+    }
+
+    .card-info {
+        font-size: 2.5vw;
+    }
 }

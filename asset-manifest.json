@@ -1,17 +1,28 @@
 {
   "files": {
-    "main.css": "/Pokedex-api/static/css/main.cb43f470.css",
-    "main.js": "/Pokedex-api/static/js/main.34e7bf06.js",
+    "main.css": "/Pokedex-api/static/css/main.e3e312d3.css",
+    "main.js": "/Pokedex-api/static/js/main.1611674a.js",
     "static/js/787.9a68ffb2.chunk.js": "/Pokedex-api/static/js/787.9a68ffb2.chunk.js",
     "static/media/Background.mp4": "/Pokedex-api/static/media/Background.0ecac3d166e102b6fc34.mp4",
     "static/media/leafs.svg": "/Pokedex-api/static/media/leafs.c2147be0a85204513ed0.svg",
+    "static/media/dragon.png": "/Pokedex-api/static/media/dragon.1e93970febb510eabdef.png",
+    "static/media/grass.png": "/Pokedex-api/static/media/grass.9e8b811696e29cbc4e5e.png",
+    "static/media/psychic.png": "/Pokedex-api/static/media/psychic.ee8fc88c4e37ce72e6a1.png",
+    "static/media/dark.png": "/Pokedex-api/static/media/dark.bbe6c695f41e2a5dc273.png",
+    "static/media/poison.png": "/Pokedex-api/static/media/poison.9d0a6a046f964255c910.png",
+    "static/media/bug.png": "/Pokedex-api/static/media/bug.9e253cb71ae204ce4e68.png",
+    "static/media/normal.png": "/Pokedex-api/static/media/normal.8428a107889f440a9474.png",
+    "static/media/ghost.png": "/Pokedex-api/static/media/ghost.b201462e399f3179e915.png",
+    "static/media/rock.png": "/Pokedex-api/static/media/rock.a66cf173aa72bd95e84e.png",
+    "static/media/fire.png": "/Pokedex-api/static/media/fire.d8c7670e6a7d09feb863.png",
+    "static/media/fairy.png": "/Pokedex-api/static/media/fairy.b7420df11438a531a37c.png",
     "index.html": "/Pokedex-api/index.html",
-    "main.cb43f470.css.map": "/Pokedex-api/static/css/main.cb43f470.css.map",
-    "main.34e7bf06.js.map": "/Pokedex-api/static/js/main.34e7bf06.js.map",
+    "main.e3e312d3.css.map": "/Pokedex-api/static/css/main.e3e312d3.css.map",
+    "main.1611674a.js.map": "/Pokedex-api/static/js/main.1611674a.js.map",
     "787.9a68ffb2.chunk.js.map": "/Pokedex-api/static/js/787.9a68ffb2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.cb43f470.css",
-    "static/js/main.34e7bf06.js"
+    "static/css/main.e3e312d3.css",
+    "static/js/main.1611674a.js"
   ]
 }

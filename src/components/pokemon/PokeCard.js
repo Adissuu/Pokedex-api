@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 import './PokeCard.css'
 
 
@@ -28,16 +29,17 @@ export default class PokeCard extends Component {
 
     render() {
         return (
-            <div className={`Card ${this.state.clicked ? "clicked" : ""}`} onClick={() => this.setState({ clicked: !this.state.clicked })}>
-                <div className="card-img">
-                    <img src={this.state.imageUrl} className='image-pkm'></img>
+            <Link to={`pokemon/${this.state.index}`}>
+                <div className={`Card ${this.state.clicked ? "clicked" : ""}`} onClick={() => this.setState({ clicked: !this.state.clicked })}>
+                    <div className="card-img">
+                        <img src={this.state.imageUrl} className='image-pkm'></img>
+                    </div>
+                    <div className="card-info">
+                        <h3>{this.state.index.toString().padStart(3, "0")}</h3>
+                        <h3>{this.state.name}</h3>
+                    </div>
                 </div>
-                <div className="card-info">
-                    <h3>{this.state.index.toString().padStart(3, "0")}</h3>
-
-                    <h3>{this.state.name}</h3>
-                </div>
-            </div>
+            </Link>
         )
     }
 }

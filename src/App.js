@@ -13,8 +13,8 @@ function App() {
   return (
     <HashRouter>
       <div>
-        <BackgroundVid />
         <div>
+          <BackgroundVid />
           <AnimatePresence>
             <motion.div initial="pageInitial" animate="pageAnimate" exit="pageExit" variants={{
               pageInitial: {

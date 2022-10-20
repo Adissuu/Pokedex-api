@@ -1,7 +1,6 @@
 import axios from "axios";
 import { motion } from "framer-motion";
 import React, { Component } from 'react'
-import { Link } from "react-router-dom";
 import { bug, dark, dragon, electric, fairy, fighting, fire, flying, ghost, grass, ground, ice, normal, poison, psychic, rock, steel, water } from '../../Assets/types/typeIcons';
 import './Pokemon.css'
 
@@ -199,97 +198,101 @@ export default class Pokemon extends Component {
         return (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} >
                 <>
-                    <div className="poke-page">
-                        <div className="poke-card" >
-                            <div className="name-type">
-                                <h1>#{this.state.index.toString().padStart(3, "0")} {this.state.name}</h1>{this.state.types.map(type => (
-                                    <img src={TYPE_COLORS[type]} alt="oui" />
-                                ))}
+                    <div className="pokemon-container">
+
+
+                        <div className="poke-page">
+                            <div className="poke-card" >
+                                <div className="name-type">
+                                    <h1>#{this.state.index.toString().padStart(3, "0")} {this.state.name}</h1>{this.state.types.map(type => (
+                                        <img src={TYPE_COLORS[type]} alt="oui" />
+                                    ))}
+                                </div>
+                                <img className="poke-img" src={this.state.imageUrl[this.state.toggle]} alt={this.state.name} onClick={() => this.handleClick()} />
+                                <div className="underline"></div>
+                                <br />
+                                <div className="metadata">
+                                    <p><strong>Height</strong></p>
+                                    <p>{this.state.height}m</p>
+                                </div>
+                                <div className="metadata">
+                                    <p><strong>Weight</strong></p>
+                                    <p>{this.state.weight}kg</p>
+                                </div>
+                                <br></br>
+                                <div className="metadata">
+                                    <p><strong>Male</strong></p>
+                                    <p>{this.state.genderRatioMale}%</p>
+                                    <p><strong>Female</strong></p>
+                                    <p>{this.state.genderRatioFemale}%</p>
+                                </div>
+                                <br></br>
+                                <div className="metadata">
+                                    <p><strong>Egg Group</strong></p>
+                                    <p>{this.state.eggGroups}</p>
+                                </div>
+                                <br></br>
+                                <div className="metadata">
+                                    <p><strong>Catch Rate</strong></p>
+                                    <p>{this.state.catchRate}%</p>
+                                </div>
+                                <br />
                             </div>
-                            <img className="poke-img" src={this.state.imageUrl[this.state.toggle]} alt={this.state.name} onClick={() => this.handleClick()} />
-                            <div className="underline"></div>
-                            <br />
-                            <div className="metadata">
-                                <p><strong>Height</strong></p>
-                                <p>{this.state.height}m</p>
-                            </div>
-                            <div className="metadata">
-                                <p><strong>Weight</strong></p>
-                                <p>{this.state.weight}kg</p>
-                            </div>
-                            <br></br>
-                            <div className="metadata">
-                                <p><strong>Male</strong></p>
-                                <p>{this.state.genderRatioMale}%</p>
-                                <p><strong>Female</strong></p>
-                                <p>{this.state.genderRatioFemale}%</p>
-                            </div>
-                            <br></br>
-                            <div className="metadata">
-                                <p><strong>Egg Group</strong></p>
-                                <p>{this.state.eggGroups}</p>
-                            </div>
-                            <br></br>
-                            <div className="metadata">
-                                <p><strong>Catch Rate</strong></p>
-                                <p>{this.state.catchRate}%</p>
-                            </div>
-                            <br />
-                        </div>
-                        <div className="poke-data">
-                            <div className="description">
-                                <h2>About</h2>
-                                <p>{this.state.description}</p>
-                            </div>
-                            <div className="description">
-                                <h2>Abilities</h2>
-                                <p>{this.state.abilities}</p>
-                            </div>
-                            <h2>Base Stats</h2>
-                            <div className="base-stats">
-                                <div className="stats">
-                                    <p>Hp</p>
-                                    <div className="progress-bar">
-                                        <div className="progress" style={{ width: `${this.state.stats.hp}%` }}></div>
+                            <div className="poke-data">
+                                <div className="description">
+                                    <h2>About</h2>
+                                    <p>{this.state.description}</p>
+                                </div>
+                                <div className="description">
+                                    <h2>Abilities</h2>
+                                    <p>{this.state.abilities}</p>
+                                </div>
+                                <h2>Base Stats</h2>
+                                <div className="base-stats">
+                                    <div className="stats">
+                                        <p>Hp</p>
+                                        <div className="progress-bar">
+                                            <div className="progress" style={{ width: `${this.state.stats.hp}%` }}></div>
+                                        </div>
+                                    </div>
+                                    <div className="stats">
+                                        <p>Attack</p>
+                                        <div className="progress-bar">
+                                            <div className="progress" style={{ width: `${this.state.stats.attack}%` }}></div>
+                                        </div>
+                                    </div>
+                                    <div className="stats">
+                                        <p>Defense</p>
+                                        <div className="progress-bar">
+                                            <div className="progress" style={{ width: `${this.state.stats.defense}%` }}></div>
+                                        </div>
+                                    </div>
+                                    <div className="stats">
+                                        <p>Special-Attack</p>
+                                        <div className="progress-bar">
+                                            <div className="progress" style={{ width: `${this.state.stats.specialAtk}%` }}></div>
+                                        </div>
+                                    </div>
+                                    <div className="stats">
+                                        <p>Special-Defense</p>
+                                        <div className="progress-bar">
+                                            <div className="progress" style={{ width: `${this.state.stats.specialDef}%` }}></div>
+                                        </div>
+                                    </div>
+                                    <div className="stats">
+                                        <p>Speed</p>
+                                        <div className="progress-bar">
+                                            <div className="progress" style={{ width: `${this.state.stats.speed}%` }}></div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="stats">
-                                    <p>Attack</p>
-                                    <div className="progress-bar">
-                                        <div className="progress" style={{ width: `${this.state.stats.attack}%` }}></div>
-                                    </div>
-                                </div>
-                                <div className="stats">
-                                    <p>Defense</p>
-                                    <div className="progress-bar">
-                                        <div className="progress" style={{ width: `${this.state.stats.defense}%` }}></div>
-                                    </div>
-                                </div>
-                                <div className="stats">
-                                    <p>Special-Attack</p>
-                                    <div className="progress-bar">
-                                        <div className="progress" style={{ width: `${this.state.stats.specialAtk}%` }}></div>
-                                    </div>
-                                </div>
-                                <div className="stats">
-                                    <p>Special-Defense</p>
-                                    <div className="progress-bar">
-                                        <div className="progress" style={{ width: `${this.state.stats.specialDef}%` }}></div>
-                                    </div>
-                                </div>
-                                <div className="stats">
-                                    <p>Speed</p>
-                                    <div className="progress-bar">
-                                        <div className="progress" style={{ width: `${this.state.stats.speed}%` }}></div>
-                                    </div>
-                                </div>
+                                <br></br>
+                                <a className="back" href="https://adissuu.github.io/Pokedex-api/#/">
+                                    <p >
+                                        Back
+                                    </p>
+                                </a>
                             </div>
-                            <br></br>
-                            <a className="back" href="https://adissuu.github.io/Pokedex-api/#/">
-                                <p >
-                                    Back
-                                </p>
-                            </a>
                         </div>
                     </div>
                 </>

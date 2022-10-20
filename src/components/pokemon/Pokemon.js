@@ -1,6 +1,10 @@
 import axios from "axios";
+import { motion } from "framer-motion";
 import React, { Component } from 'react'
+import { Link } from "react-router-dom";
 import { bug, dark, dragon, electric, fairy, fighting, fire, flying, ghost, grass, ground, ice, normal, poison, psychic, rock, steel, water } from '../../Assets/types/typeIcons';
+import './Pokemon.css'
+
 
 const TYPE_COLORS = {
     bug: bug,
@@ -24,14 +28,15 @@ const TYPE_COLORS = {
 };
 
 export default class Pokemon extends Component {
+
     state = {
         name: '',
         index: '',
+        imgPrev: '',
+        imgNext: '',
         imageUrl: [],
         types: [],
         description: '',
-        statTitleWidth: 3,
-        statBarWidth: 9,
         stats: {
             hp: '',
             attack: '',
@@ -49,8 +54,16 @@ export default class Pokemon extends Component {
         genderRatioFemale: '',
         evs: '',
         hatchSteps: '',
-        themeColor: '#EF5350'
+        themeColor: '#EF5350',
+        toggle: 1
     };
+
+
+    handleClick() {
+        this.setState(prevState => ({
+            toggle: ((prevState.toggle + 1) % 2)
+        }));
+    }
 
     async componentDidMount() {
         const { index } = this.props.match.params;
@@ -64,6 +77,8 @@ export default class Pokemon extends Component {
 
         const name = pokemonRes.data.name;
         const imageUrl = [pokemonRes.data.sprites.front_default, `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index}.png`];
+        const imgPrev = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index - 1}.png`;
+        const imgNext = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${(parseInt(index) + 1)}.png`;
         let { hp, attack, defense, speed, specialAtk, specialDef } = ''
 
         pokemonRes.data.stats.map(stat => {
@@ -91,7 +106,7 @@ export default class Pokemon extends Component {
             }
         });
 
-        const height = pokemonRes.data.height * 10;
+        const height = pokemonRes.data.height / 10;
         const weight = pokemonRes.data.height / 10;
         const types = pokemonRes.data.types.map(type => type.type.name);
 
@@ -159,6 +174,8 @@ export default class Pokemon extends Component {
         });
         this.setState({
             imageUrl,
+            imgNext,
+            imgPrev,
             index,
             name,
             types,
@@ -180,14 +197,103 @@ export default class Pokemon extends Component {
 
     render() {
         return (
-            <div>
-                <h1>{this.state.name}</h1>
-                <img src={this.state.imageUrl[1]} alt={this.state.name} />
-                <p>{this.state.description}</p>
-                {this.state.types.map(type => (
-                    <img src={TYPE_COLORS[type]} alt="oui" />
-                ))}
-            </div >
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} >
+                <>
+                    <div className="poke-page">
+                        <div className="poke-card" >
+                            <div className="name-type">
+                                <h1>#{this.state.index.toString().padStart(3, "0")} {this.state.name}</h1>{this.state.types.map(type => (
+                                    <img src={TYPE_COLORS[type]} alt="oui" />
+                                ))}
+                            </div>
+                            <img className="poke-img" src={this.state.imageUrl[this.state.toggle]} alt={this.state.name} onClick={() => this.handleClick()} />
+                            <div className="underline"></div>
+                            <br />
+                            <div className="metadata">
+                                <p><strong>Height</strong></p>
+                                <p>{this.state.height}m</p>
+                            </div>
+                            <div className="metadata">
+                                <p><strong>Weight</strong></p>
+                                <p>{this.state.weight}kg</p>
+                            </div>
+                            <br></br>
+                            <div className="metadata">
+                                <p><strong>Male</strong></p>
+                                <p>{this.state.genderRatioMale}%</p>
+                                <p><strong>Female</strong></p>
+                                <p>{this.state.genderRatioFemale}%</p>
+                            </div>
+                            <br></br>
+                            <div className="metadata">
+                                <p><strong>Egg Group</strong></p>
+                                <p>{this.state.eggGroups}</p>
+                            </div>
+                            <br></br>
+                            <div className="metadata">
+                                <p><strong>Catch Rate</strong></p>
+                                <p>{this.state.catchRate}%</p>
+                            </div>
+                            <br />
+                        </div>
+                        <div className="poke-data">
+                            <div className="description">
+                                <h2>About</h2>
+                                <p>{this.state.description}</p>
+                            </div>
+                            <div className="description">
+                                <h2>Abilities</h2>
+                                <p>{this.state.abilities}</p>
+                            </div>
+                            <h2>Base Stats</h2>
+                            <div className="base-stats">
+                                <div className="stats">
+                                    <p>Hp</p>
+                                    <div className="progress-bar">
+                                        <div className="progress" style={{ width: `${this.state.stats.hp}%` }}></div>
+                                    </div>
+                                </div>
+                                <div className="stats">
+                                    <p>Attack</p>
+                                    <div className="progress-bar">
+                                        <div className="progress" style={{ width: `${this.state.stats.attack}%` }}></div>
+                                    </div>
+                                </div>
+                                <div className="stats">
+                                    <p>Defense</p>
+                                    <div className="progress-bar">
+                                        <div className="progress" style={{ width: `${this.state.stats.defense}%` }}></div>
+                                    </div>
+                                </div>
+                                <div className="stats">
+                                    <p>Special-Attack</p>
+                                    <div className="progress-bar">
+                                        <div className="progress" style={{ width: `${this.state.stats.specialAtk}%` }}></div>
+                                    </div>
+                                </div>
+                                <div className="stats">
+                                    <p>Special-Defense</p>
+                                    <div className="progress-bar">
+                                        <div className="progress" style={{ width: `${this.state.stats.specialDef}%` }}></div>
+                                    </div>
+                                </div>
+                                <div className="stats">
+                                    <p>Speed</p>
+                                    <div className="progress-bar">
+                                        <div className="progress" style={{ width: `${this.state.stats.speed}%` }}></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br></br>
+                            <a className="back" href="https://adissuu.github.io/Pokedex-api/#/">
+                                <p >
+                                    Back
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                </>
+            </motion.div >
         )
     };
 }
